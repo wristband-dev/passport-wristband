@@ -67,7 +67,7 @@ passport.use(new WristbandStrategy({
     }
 ));
 
-
+```
 
 #### Authenticate Requests
 
@@ -77,6 +77,8 @@ Use router to ensure `login` and `callback` routes to authenticate through Wrist
 
 For example, as route middleware in an [Express](http://expressjs.com/)
 application:
+
+
 
 ```js
 
