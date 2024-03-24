@@ -1,0 +1,62 @@
+{
+  "name": "passport-wristband",
+  "version": "1.0.0",
+  "description": "Wristband authentication strategy for Passport.",
+  "keywords": [
+    "passport",
+    "auth",
+    "authn",
+    "authentication",
+    "authz",
+    "authorization",
+    "oauth",
+    "oauth2"
+  ],
+  "author": {
+    "name": "Bryan Hsiao",
+    "email": "bryhsiao@gmail.com",
+    "url": "https://www.wristband.dev/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wristband/passport-wristband.git"
+  },
+  "bugs": {
+    "url": "http://github.com/wristband/passport-wristband/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/wristband"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "../../../passport-wristband/lib",
+  "dependencies": {
+    "agentkeepalive": "^4.5.0",
+    "axios": "^1.6.7",
+    "https": "^1.0.0",
+    "passport-strategy": "1.x.x"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-passport-strategy": "1.x.x",
+    "make-node": "0.4.6",
+    "mocha": "^10.3.0",
+    "nyc": "^15.1.0",
+    "proxyquire": "0.6.x",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.2"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec --require test/setup/node test/*.test.js test/**/*.test.js",
+    "test-with-coverage": "nyc --reporter=text node_modules/.bin/mocha spec --require test/setup/node test/*.test.js test/**/*.test.js"
+  }
+}
