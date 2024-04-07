@@ -1,4 +1,27 @@
-# passport-wristband
+<div align="center">
+  <a href="https://wristband.dev">
+    <picture>
+      <img src="https://assets.wristband.dev/images/email_branding_logo_v1.png" alt="Github" width="297" height="64">
+    </picture>
+  </a>
+  <p align="center">
+    Enterprise-ready auth that is secure by default, truly multi-tenant, and ungated for small businesses.
+  </p>
+  <p align="center">
+    <b>
+      <a href="https://wristband.dev">Website</a> •
+      <a href="https://wristband.stoplight.io/docs/documentation">Documentation</a>
+    </b>
+  </p>
+</div>
+
+<br/>
+
+---
+
+<br/>
+
+# Wristband Multi-Tenant Authentication Strategy SDK for Passport
 
 Wristband authentication strategy for [Passport](https://www.passportjs.org/).
 
@@ -6,17 +29,15 @@ This module lets you authenticate through Wristband.dev with its supported IDPs 
 By plugging into Passport, Wristband will support login, authorize, callback, sessionStore, token management
 
 
-<div align="center">
-
 [How to setup a demo app with Wristband](https://wristband.stoplight.io/docs/documentation/lga1sdceq9ttg-setting-up-a-demo-app) 
 [What does wristband offer](https://wristband.stoplight.io/docs/documentation/75dbhsj356jad-welcome) 
 
-
-</div>
 ---
 
-[![npm]](https://www.npmjs.com/package/passport-wristband)
-
+[![npm package](https://img.shields.io/badge/npm%20i-passport--wristband-brightgreen)](https://www.npmjs.com/package/@wristband/passport-wristband)
+[![version number](https://img.shields.io/github/v/release/wristband-dev/passport-wristband?color=green&label=version)](https://github.com/wristband-dev/passport-wristband/releases)
+[![Actions Status](https://github.com/wristband-dev/express-auth/workflows/Test/badge.svg)](https://github.com/wristband-dev/passport-wristband/actions)
+[![License](https://img.shields.io/github/license/wristband-dev/passport-wristband)](https://github.com/wristband-dev/passport-wristband/blob/main/LICENSE.md)
 
 ## Install
 
@@ -30,6 +51,10 @@ The Wristband authentication strategy authenticates users using a wristband
 account credential to obtain access, refresh tokens, and user profile. The strategy
 requires a callback, which receives an access token and profile,
 and calls the callback function providing a req.user object with tokens, user profile and more. 
+
+- [Auth Flow Walkthrough](https://wristband.stoplight.io/docs/documentation/gw47leh3pqplp-auth-flow-walkthrough).
+- [Login Workflow In Depth](https://wristband.stoplight.io/docs/documentation/d9bqywv6a3j9k-login-workflow)
+
 
 ```js
 passport.use(new WristbandStrategy({
@@ -105,7 +130,39 @@ router.get('/callback', passport.authenticate('wristband', {failureRedirect: '/l
     });
 ```
 
-## Related Modules
+## Wristband Auth Configuration Options
+
+
+| AuthConfig Field | Type | Required | Description |
+| ---------- | ---- | -------- | ----------- |
+| clientId | string | Yes | The client ID for the application. |
+| clientSecret | string | Yes | The client secret for the application. |
+| customApplicationLoginPageUrl | string | No | Custom Application-Level Login Page URL (Tenant Discovery) if you are building/self-hosting that portion of the UI. By default, the SDK will use your Wristband-hosted Application-Level Login pgae URL. The SDK will redirect to either the self-hosted or Wristband-hosted URL in certain cases where it cannot resolve a proper Tenant-Level Login URL. |
+| callbackUrl | string | No | The redirect URI for callback after authentication. |
+| rootDomain | string | Depends | The root domain for your application. This value only needs to be specified if you use tenant subdomains in your login and redirect URLs. |
+| scopes | string[] | No | The scopes required for authentication. Refer to the docs for [currently supported scopes](https://wristband.stoplight.io/docs/documentation/xynze1qjtq6ic-o-auth2-and-open-id-connect-oidc#supported-openid-scopes). The default value is `[openid, offline_access, email]`. |
+| useCustomDomains | boolean | No | Indicates whether custom domains are used for authentication. |
+| useTenantSubdomains | boolean | No | Indicates whether tenant subdomains are used for authentication. |
+| wristbandApplicationDomain | string | Yes | The vanity domain of the Wristband application. |
+
+#### Login Hints
+
+Wristband will redirect to your Express Login Endpoint for workflows like Application-Level Login (Tenant Discovery) and can pass the `login_hint` query parameter as part of the redirect request:
+
+```sh
+GET https://customer01.yourapp.io/auth/login?login_hint=user@wristband.dev
+```
+
+If Wristband passes this parameter, it will be appended as part of the redirect request to the Wristband Authorize Endpoint. Typically, the email form field on the Tenant-Level Login page is pre-filled when a user has previously entered their email on the Application-Level Login Page.
+
+#### Return URLs
+
+It is possible that users will try to access a location within your application that is not some default landing page. In those cases, they would expect to immediately land back at that desired location after logging in.  This is a better experience for the user, especially in cases where they have application URLs bookmarked for convenience.  Given that your frontend will redirect users to your Express Login Endpoint, you can pass a `return_url` query parameter when redirecting to your Login Endpoint, and that URL will be available to you upon completion of the Callback Endpoint.
+
+```sh
+GET https://customer01.yourapp.io/auth/login?return_url=https://customer01.yourapp.io/settings/profile
+```
+
 
 ## Test
 
