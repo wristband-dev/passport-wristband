@@ -1,6 +1,6 @@
 {
-  "name": "passport-wristband",
-  "version": "1.0.0",
+  "name": "@wristband/passport-wristband",
+  "version": "1.0.1",
   "description": "Wristband authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -12,9 +12,17 @@
     "oauth",
     "oauth2"
   ],
+  "files": [
+    "lib",
+    "LICENSE.md",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
-    "name": "Bryan Hsiao",
-    "email": "bryhsiao@gmail.com",
+    "name": "Wristband",
     "url": "https://www.wristband.dev/"
   },
   "repository": {

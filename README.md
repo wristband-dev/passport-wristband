@@ -138,14 +138,14 @@ router.get('/callback', passport.authenticate('wristband', {failureRedirect: '/l
 | clientId | string | Yes | The client ID for the application. |
 | clientSecret | string | Yes | The client secret for the application. |
 | customApplicationLoginPageUrl | string | No | Custom Application-Level Login Page URL (Tenant Discovery) if you are building/self-hosting that portion of the UI. By default, the SDK will use your Wristband-hosted Application-Level Login pgae URL. The SDK will redirect to either the self-hosted or Wristband-hosted URL in certain cases where it cannot resolve a proper Tenant-Level Login URL. |
-| callbackUrl | string | No | The redirect URI for callback after authentication. |
+| redirectUri | string | Yes | The redirect URI for callback after authentication. |
 | rootDomain | string | Depends | The root domain for your application. This value only needs to be specified if you use tenant subdomains in your login and redirect URLs. |
 | scopes | string[] | No | The scopes required for authentication. Refer to the docs for [currently supported scopes](https://wristband.stoplight.io/docs/documentation/xynze1qjtq6ic-o-auth2-and-open-id-connect-oidc#supported-openid-scopes). The default value is `[openid, offline_access, email]`. |
 | useCustomDomains | boolean | No | Indicates whether custom domains are used for authentication. |
 | useTenantSubdomains | boolean | No | Indicates whether tenant subdomains are used for authentication. |
 | wristbandApplicationDomain | string | Yes | The vanity domain of the Wristband application. |
 
-#### Login Hints
+#### Login Hint
 
 Wristband will redirect to your Express Login Endpoint for workflows like Application-Level Login (Tenant Discovery) and can pass the `login_hint` query parameter as part of the redirect request:
 
@@ -155,7 +155,7 @@ GET https://customer01.yourapp.io/auth/login?login_hint=user@wristband.dev
 
 If Wristband passes this parameter, it will be appended as part of the redirect request to the Wristband Authorize Endpoint. Typically, the email form field on the Tenant-Level Login page is pre-filled when a user has previously entered their email on the Application-Level Login Page.
 
-#### Return URLs
+#### Return URL
 
 It is possible that users will try to access a location within your application that is not some default landing page. In those cases, they would expect to immediately land back at that desired location after logging in.  This is a better experience for the user, especially in cases where they have application URLs bookmarked for convenience.  Given that your frontend will redirect users to your Express Login Endpoint, you can pass a `return_url` query parameter when redirecting to your Login Endpoint, and that URL will be available to you upon completion of the Callback Endpoint.
 
