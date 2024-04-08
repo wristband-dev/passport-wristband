@@ -138,7 +138,7 @@ router.get('/callback', passport.authenticate('wristband', {failureRedirect: '/l
 | clientId | string | Yes | The client ID for the application. |
 | clientSecret | string | Yes | The client secret for the application. |
 | customApplicationLoginPageUrl | string | No | Custom Application-Level Login Page URL (Tenant Discovery) if you are building/self-hosting that portion of the UI. By default, the SDK will use your Wristband-hosted Application-Level Login pgae URL. The SDK will redirect to either the self-hosted or Wristband-hosted URL in certain cases where it cannot resolve a proper Tenant-Level Login URL. |
-| callbackUrl | string | No | The redirect URI for callback after authentication. |
+| redirectUri | string | Yes | The redirect URI for callback after authentication. |
 | rootDomain | string | Depends | The root domain for your application. This value only needs to be specified if you use tenant subdomains in your login and redirect URLs. |
 | scopes | string[] | No | The scopes required for authentication. Refer to the docs for [currently supported scopes](https://wristband.stoplight.io/docs/documentation/xynze1qjtq6ic-o-auth2-and-open-id-connect-oidc#supported-openid-scopes). The default value is `[openid, offline_access, email]`. |
 | useCustomDomains | boolean | No | Indicates whether custom domains are used for authentication. |

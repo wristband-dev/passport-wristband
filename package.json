@@ -1,6 +1,6 @@
 {
   "name": "@wristband/passport-wristband",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wristband authentication strategy for Passport.",
   "keywords": [
     "passport",
