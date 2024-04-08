@@ -145,7 +145,7 @@ router.get('/callback', passport.authenticate('wristband', {failureRedirect: '/l
 | useTenantSubdomains | boolean | No | Indicates whether tenant subdomains are used for authentication. |
 | wristbandApplicationDomain | string | Yes | The vanity domain of the Wristband application. |
 
-#### Login Hints
+#### Login Hint
 
 Wristband will redirect to your Express Login Endpoint for workflows like Application-Level Login (Tenant Discovery) and can pass the `login_hint` query parameter as part of the redirect request:
 
@@ -155,7 +155,7 @@ GET https://customer01.yourapp.io/auth/login?login_hint=user@wristband.dev
 
 If Wristband passes this parameter, it will be appended as part of the redirect request to the Wristband Authorize Endpoint. Typically, the email form field on the Tenant-Level Login page is pre-filled when a user has previously entered their email on the Application-Level Login Page.
 
-#### Return URLs
+#### Return URL
 
 It is possible that users will try to access a location within your application that is not some default landing page. In those cases, they would expect to immediately land back at that desired location after logging in.  This is a better experience for the user, especially in cases where they have application URLs bookmarked for convenience.  Given that your frontend will redirect users to your Express Login Endpoint, you can pass a `return_url` query parameter when redirecting to your Login Endpoint, and that URL will be available to you upon completion of the Callback Endpoint.
 

@@ -1,5 +1,5 @@
 {
-  "name": "passport-wristband",
+  "name": "@wristband/passport-wristband",
   "version": "1.0.0",
   "description": "Wristband authentication strategy for Passport.",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "author": {
     "name": "Bryan Hsiao",
-    "email": "bryhsiao@gmail.com",
+    "email": "bryan@gmail.com",
     "url": "https://www.wristband.dev/"
   },
   "repository": {
