@@ -1,6 +1,6 @@
 {
   "name": "@wristband/passport-wristband",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wristband authentication strategy for Passport.",
   "keywords": [
     "passport",
@@ -27,10 +27,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/wristband/passport-wristband.git"
+    "url": "git://github.com/wristband-dev/passport-wristband.git"
   },
   "bugs": {
-    "url": "http://github.com/wristband/passport-wristband/issues"
+    "url": "http://github.com/wristband-dev/passport-wristband/issues"
   },
   "funding": {
     "type": "github",
