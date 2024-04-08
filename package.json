@@ -12,9 +12,17 @@
     "oauth",
     "oauth2"
   ],
+  "files": [
+    "lib",
+    "LICENSE.md",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
-    "name": "Bryan Hsiao",
-    "email": "bryan@gmail.com",
+    "name": "Wristband",
     "url": "https://www.wristband.dev/"
   },
   "repository": {
