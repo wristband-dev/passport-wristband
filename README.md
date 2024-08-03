@@ -10,7 +10,7 @@
   <p align="center">
     <b>
       <a href="https://wristband.dev">Website</a> •
-      <a href="https://wristband.stoplight.io/docs/documentation">Documentation</a>
+      <a href="https://docs.wristband.dev">Documentation</a>
     </b>
   </p>
 </div>
@@ -27,10 +27,6 @@ Wristband authentication strategy for [Passport](https://www.passportjs.org/).
 
 This module lets you authenticate through Wristband.dev with its supported IDPs in your Node.js applications.
 By plugging into Passport, Wristband will support login, authorize, callback, sessionStore, token management
-
-
-[How to setup a demo app with Wristband](https://wristband.stoplight.io/docs/documentation/lga1sdceq9ttg-setting-up-a-demo-app) 
-[What does wristband offer](https://wristband.stoplight.io/docs/documentation/75dbhsj356jad-welcome) 
 
 ---
 
@@ -52,8 +48,8 @@ account credential to obtain access, refresh tokens, and user profile. The strat
 requires a callback, which receives an access token and profile,
 and calls the callback function providing a req.user object with tokens, user profile and more. 
 
-- [Auth Flow Walkthrough](https://wristband.stoplight.io/docs/documentation/gw47leh3pqplp-auth-flow-walkthrough).
-- [Login Workflow In Depth](https://wristband.stoplight.io/docs/documentation/d9bqywv6a3j9k-login-workflow)
+- [Auth Flow Walkthrough](https://docs.wristband.dev/docs/auth-flows-and-diagrams)
+- [Login Workflow In Depth](https://docs.wristband.dev/docs/login-workflow)
 
 
 ```js
@@ -73,7 +69,7 @@ passport.use(new WristbandStrategy({
 
 ```
 
-#### Adveanced Strategy Configuration
+#### Advanced Strategy Configuration
 
 ```js
 passport.use(new WristbandStrategy({
@@ -140,7 +136,7 @@ router.get('/callback', passport.authenticate('wristband', {failureRedirect: '/l
 | customApplicationLoginPageUrl | string | No | Custom Application-Level Login Page URL (Tenant Discovery) if you are building/self-hosting that portion of the UI. By default, the SDK will use your Wristband-hosted Application-Level Login pgae URL. The SDK will redirect to either the self-hosted or Wristband-hosted URL in certain cases where it cannot resolve a proper Tenant-Level Login URL. |
 | redirectUri | string | Yes | The redirect URI for callback after authentication. |
 | rootDomain | string | Depends | The root domain for your application. This value only needs to be specified if you use tenant subdomains in your login and redirect URLs. |
-| scopes | string[] | No | The scopes required for authentication. Refer to the docs for [currently supported scopes](https://wristband.stoplight.io/docs/documentation/xynze1qjtq6ic-o-auth2-and-open-id-connect-oidc#supported-openid-scopes). The default value is `[openid, offline_access, email]`. |
+| scopes | string[] | No | The scopes required for authentication. Refer to the docs for [currently supported scopes](https://docs.wristband.dev/docs/oauth2-and-openid-connect-oidc#supported-openid-scopes). The default value is `[openid, offline_access, email]`. |
 | useCustomDomains | boolean | No | Indicates whether custom domains are used for authentication. |
 | useTenantSubdomains | boolean | No | Indicates whether tenant subdomains are used for authentication. |
 | wristbandApplicationDomain | string | Yes | The vanity domain of the Wristband application. |
@@ -168,14 +164,7 @@ GET https://customer01.yourapp.io/auth/login?return_url=https://customer01.youra
 
     $ npm run test-with-coverage
 
-## Contributing
 
+## Questions
 
-## License
-
-[The MIT License](http://opensource.org/licenses/MIT)
-[https://www.wristband.dev/](https://www.wristband.dev/)
-
-Copyright (c) 2024 Apitopia, Inc.
-
-
+Reach out to the Wristband team at <support@wristband.dev> for any questions regarding this SDK.
