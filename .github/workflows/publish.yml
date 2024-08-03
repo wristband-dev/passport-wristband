@@ -26,6 +26,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install modules
         run: npm ci
+      - name: Fix package.json
+        run: npm pkg fix
       - name: Publish to npm
         run: npm publish --access public --tag latest
         env:
